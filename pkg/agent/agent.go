@@ -228,7 +228,8 @@ func buildFlowExporter(cfg *Config) (flowExporter, error) {
 			},
 		}).ExportFlows, nil
 	default:
-		return nil, fmt.Errorf("wrong export type %s. Admitted values are grpc, kafka", cfg.Export)
+		echoExporter := exporter.NewEchoProto()
+		return echoExporter.ExportFlows, nil
 	}
 
 }
